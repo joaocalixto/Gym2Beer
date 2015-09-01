@@ -46,6 +46,7 @@ public class MainActivity extends Activity {
 
     public void dayClicked(View view) {
         // Is the view now checked?
+        //tested
         boolean checked = ((CheckBox) view).isChecked();
         if(checked){
             SharedPreferences.Editor editor = sharedPref.edit();
