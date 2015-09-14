@@ -4,5 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="preference_file_key">br.com.simplelife.gym2beer_SHARED_FILE</string>
-    <string name="day_at_gym">0</string>
+    <string name="day_at_gym">day_at_gym</string>
+    <string name="is_beer_taken">is_beer_taken</string>
 </resources>

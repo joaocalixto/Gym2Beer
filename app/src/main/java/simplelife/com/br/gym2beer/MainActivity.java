@@ -30,6 +30,13 @@ public class MainActivity extends Activity {
         sharedPref = context.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         dayAtGym = sharedPref.getInt(getString(R.string.day_at_gym), 0);
 
+        boolean aBeerTaken = sharedPref.getBoolean(getString(R.string.is_beer_taken), false);
+
+        if(aBeerTaken){
+            CheckBox checkBoxBeer = (CheckBox) findViewById(R.id.checkBox_monthly);
+            checkBoxBeer.setChecked(true);
+        }
+
         for(int i=1; i <= dayAtGym; i++) {
             String buttonID = "checkBox_day" + i;
             int resID = getResources().getIdentifier(buttonID, "id", "simplelife.com.br.gym2beer");
@@ -44,6 +51,19 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+    public void monthlyClicked(View view){
+        boolean aBeerTaken = sharedPref.getBoolean(getString(R.string.is_beer_taken), false);
+
+        if(aBeerTaken){
+            Toast.makeText(this, "Voce nao pode desmarcar, espere a proxima rodada", Toast.LENGTH_SHORT).show();
+        }else{
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(getString(R.string.is_beer_taken), true);
+            editor.commit();
+        }
+    }
+
 
     public void dayClicked(View view) {
         // Is the view now checked?
